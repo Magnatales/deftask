@@ -60,7 +60,7 @@ If you want to debug the creation, completion, or cancellation of tasks, modify 
 
 ```lua
 return {
-    enabled = false, -- Set this to false to disable logging
+    enabled = true, -- Set this to false to disable logging
     log_available =
     {
         [AsyncLogType.CREATED] = true,
