@@ -51,7 +51,7 @@ end)
 So then you can use it like so:
 ```lua
 run_async(function()
-    await(example_task)
+    await(example_task(ct))
 end)
 ```
 
