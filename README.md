@@ -4,4 +4,4 @@
 
 An asyc/await wrapper for Defold game engine
 
-html5 1.0 here https://magnatales.github.io/deftask.github.io/
+Web version -> [HTML5](https://magnatales.github.io/deftask-web/)
