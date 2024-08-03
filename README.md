@@ -40,7 +40,7 @@ local example_task = async(function(ct)
     print("Task started!")
     await(task.delay(5, ct))
     print("Finished delay!")
-    await(task.wait_frames(1))
+    await(task.wait_frames(1, ct))
     print("Finished waiting one frame!")
 end)
 ```
