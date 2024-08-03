@@ -1,6 +1,6 @@
 # deftask
 
-An async/await wrapper for [Defold](https://defold.com/) game engine
+An async/await wrapper for [Defold](https://defold.com/)
 
 Web version -> [HTML5](https://magnatales.github.io/deftask-web/)
 
