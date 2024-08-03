@@ -4,6 +4,8 @@ An asyc/await wrapper for Defold game engine
 
 Web version -> [HTML5](https://magnatales.github.io/deftask-web/)
 
+<h2>General</h1>
+
 ```lua
 local task = require("deftask.task")
 
@@ -34,7 +36,9 @@ function init(_)
 end
 ```
 
-Create a your own task like this
+<h2>Creation</h2>
+Create a your own task like this:
+
 ```lua
 local example_task = async(function(ct)
     print("Task started!")
@@ -51,7 +55,9 @@ run_async(function()
 end)
 ```
 
+<h2>Debug</h2>
 If you want to debug the creation, completion, or cancellation of tasks, modify the settings inside async_config.lua
+
 ```lua
 return {
     enabled = false, -- Set this to false to disable logging
