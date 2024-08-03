@@ -1,0 +1,10 @@
+name: "wait_until"
+scale_along_z: 0
+embedded_instances {
+  id: "wait_until"
+  data: "components {\n"
+  "  id: \"wait_until\"\n"
+  "  component: \"/examples/wait_until/wait_until.gui\"\n"
+  "}\n"
+  ""
+}

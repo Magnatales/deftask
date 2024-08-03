@@ -1,0 +1,10 @@
+name: "when_all"
+scale_along_z: 0
+embedded_instances {
+  id: "when_all"
+  data: "components {\n"
+  "  id: \"when_all\"\n"
+  "  component: \"/examples/when_all/when_all.gui\"\n"
+  "}\n"
+  ""
+}

@@ -1,0 +1,31 @@
+script: ""
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
+nodes {
+  position {
+    x: 640.0
+    y: 360.0
+  }
+  scale {
+    x: 3.5
+    y: 3.5
+    z: 3.5
+  }
+  size {
+    x: 300.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "DefTask!\n"
+  "\n"
+  "A wrapper for async/await"
+  font: "default"
+  id: "text"
+  pivot: PIVOT_S
+  line_break: true
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

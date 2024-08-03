@@ -1,0 +1,32 @@
+script: ""
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
+nodes {
+  position {
+    x: 50.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "< Left Arrow"
+  font: "default"
+  id: "left"
+  pivot: PIVOT_SW
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 1230.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "Right arrow >\n"
+  ""
+  font: "default"
+  id: "right"
+  pivot: PIVOT_SE
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

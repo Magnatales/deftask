@@ -1,0 +1,206 @@
+script: "/examples/when_all/when_all.gui_script"
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
+textures {
+  name: "deftask"
+  texture: "/examples/shared/deftask.atlas"
+}
+nodes {
+  position {
+    x: 943.0
+    y: 508.0
+  }
+  scale {
+    x: 3.0
+    y: 3.0
+    z: 3.0
+  }
+  type: TYPE_TEXT
+  text: "When All"
+  font: "default"
+  id: "title"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 943.0
+    y: 310.0
+  }
+  scale {
+    x: 1.5
+    y: 1.5
+    z: 1.5
+  }
+  type: TYPE_TEXT
+  text: "Press F to cancel the tasks"
+  font: "default"
+  id: "body"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 750.0
+    y: 388.0
+  }
+  size {
+    x: 200.0
+    y: 40.0
+  }
+  color {
+    x: 0.0
+    y: 0.2
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "Task1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -100.0
+  }
+  size {
+    x: 200.0
+    y: 40.0
+  }
+  color {
+    x: 0.2
+    y: 0.4
+    z: 0.2
+  }
+  type: TYPE_BOX
+  id: "Task1_foreground"
+  pivot: PIVOT_W
+  parent: "Task1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -80.0
+  }
+  size {
+    x: 160.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "Task1: "
+  font: "default"
+  id: "Task1_text"
+  pivot: PIVOT_W
+  parent: "Task1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 1100.0
+    y: 388.0
+  }
+  size {
+    x: 200.0
+    y: 40.0
+  }
+  color {
+    x: 0.0
+    y: 0.2
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "Task2"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -100.0
+  }
+  size {
+    x: 200.0
+    y: 40.0
+  }
+  color {
+    x: 0.2
+    y: 0.4
+    z: 0.2
+  }
+  type: TYPE_BOX
+  id: "Task2_foreground"
+  pivot: PIVOT_W
+  parent: "Task2"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -80.0
+  }
+  size {
+    x: 160.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "Task2:  "
+  font: "default"
+  id: "Task2_text"
+  pivot: PIVOT_W
+  parent: "Task2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 943.0
+    y: 234.0
+  }
+  scale {
+    x: 1.5
+    y: 1.5
+    z: 1.5
+  }
+  type: TYPE_TEXT
+  text: "Press Space to restart"
+  font: "default"
+  id: "bottom"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 300.0
+    y: 360.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+  type: TYPE_BOX
+  texture: "deftask/when_all"
+  id: "box"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 226.0
+  }
+  scale {
+    x: 2.0
+    y: 2.0
+    z: 2.0
+  }
+  size {
+    x: 500.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "Requires ALL the tasks to be completed to success"
+  font: "default"
+  id: "text"
+  line_break: true
+  parent: "box"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

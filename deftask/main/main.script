@@ -1,0 +1,41 @@
+local proxies = {"/main#menu","/main#when_all", "/main#when_any", "/main#wait_until"}
+local current_proxy = 1
+
+local function load_proxy(proxy)
+	msg.post(proxy, "load")
+end
+
+local function load_new_proxy(new_proxy_index)
+	print("From " .. proxies[current_proxy] .. " to " .. proxies[new_proxy_index])
+	local current = proxies[current_proxy]
+	msg.post(current, "disable")
+	msg.post(current, "final")
+	msg.post(current, "unload")
+
+	current_proxy = new_proxy_index
+	load_proxy(proxies[current_proxy])
+end
+
+function init(_)
+	local debugger = require("debugger.debugger")
+	debugger.start()
+	msg.post(".", "acquire_input_focus")
+	load_proxy(proxies[current_proxy])
+end
+
+function on_message(_, message_id, _, sender)
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "init")
+        msg.post(sender, "enable")
+	end
+end
+
+function on_input(_, action_id, action)
+	if action_id == hash("right") and action.pressed then
+		print("Right pressed")
+		load_new_proxy(current_proxy % #proxies + 1)
+	elseif action_id == hash("left") and action.pressed then
+		print("Left pressed")
+		load_new_proxy((current_proxy - 2) % #proxies + 1)
+	end
+end

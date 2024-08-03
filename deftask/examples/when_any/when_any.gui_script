@@ -1,0 +1,45 @@
+local task = require("deftask.task")
+local cancellation = require("deftask.cancellation")
+local example_task = require("examples.shared.example_task")
+
+--- @type CancellationToken
+local ct
+DT = 0.0
+
+local function start_tasks()
+	msg.post(".", "acquire_input_focus")
+	gui.set_text(gui.get_node("body"), "Press F to cancel the tasks")
+	ct = cancellation.new("when_any_ct")
+	local ccuid = ct:register((function()
+		gui.set_text(gui.get_node("title"), "WhenAny cancelled!")
+	end))
+	gui.set_text(gui.get_node("title"), "WhenAny processing")
+	run_async(function()
+		local short_task = example_task.task_progress_bar(5, "Task1", ct)
+		local long_task = example_task.task_progress_bar(10, "Task2", ct)
+		await(task.when_any(long_task, short_task))
+		ct:unregister(ccuid)
+		ct:cancel()
+		gui.set_text(gui.get_node("title"), "WhenAny completed!")
+		gui.set_text(gui.get_node("body"), "Any task was completed")
+	end)
+end
+
+function init(_)
+	start_tasks()
+end
+
+function update(_, dt)
+	DT = dt
+end
+
+function on_input(_, action_id, action)
+	if action_id == hash("f") and action.pressed and not ct.cancellationRequested then
+		gui.set_text(gui.get_node("body"), "Token cancelled")
+		ct:cancel()
+	elseif action_id == hash("space") and action.pressed then
+		ct:cancel()
+		msg.post(".", "release_input_focus")
+		start_tasks()
+	end
+end

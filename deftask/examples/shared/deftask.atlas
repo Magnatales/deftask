@@ -1,0 +1,10 @@
+images {
+  image: "/examples/wait_until/wait_until.png"
+}
+images {
+  image: "/examples/when_all/when_all.png"
+}
+images {
+  image: "/examples/when_any/when_any.png"
+}
+extrude_borders: 2

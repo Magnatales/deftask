@@ -1,0 +1,72 @@
+local task = require("deftask.task")
+local cancellation = require("deftask.cancellation")
+local progress_bar = require("examples.shared.progress_bar")
+
+--- @type CancellationToken
+local ct
+
+local keys = { "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "g", "h", "j", "k", "l", "z", "x",
+	"c", "v", "b", "n", "m" }
+local key_pressed = { input = "empty" }
+
+local function request_key()
+	local index = math.random(1, #keys)
+	local requested_key = keys[index]
+	gui.set_text(gui.get_node("body"), "Press " .. string.upper(requested_key) .. " Key")
+	return requested_key
+end
+
+local function condition(key_requested)
+	local predicate = function()
+	  return key_pressed.input == hash(key_requested)
+	end
+
+	return predicate
+end
+
+local function start_tasks()
+	msg.post(".", "acquire_input_focus")
+	ct = cancellation.new("when_until_ct")
+	local progress_bar = progress_bar:new("Task1")
+	progress_bar:set_color(vmath.vector4(0.3, 0.6, 0.3, 1))
+	local cuid = ct:register((function()
+		gui.set_text(gui.get_node("title"), "WhenUntil cancelled!")
+		progress_bar:set_color(vmath.vector4(0.8, 0, 0, 1))
+	end))
+	gui.set_text(gui.get_node("title"), "WhenUntil processing")
+	run_async(function()
+		local progress = 0
+		progress_bar:update_progress(progress)
+		while progress < 100 do
+			local key_requested = request_key()
+			await(task.wait_until(condition(key_requested), ct))
+			progress = progress + 10
+			progress_bar:animate_progress(progress / 100)
+		end
+		ct:unregister(cuid)
+		ct:cancel()
+		gui.set_text(gui.get_node("title"), "WhenUntil completed!")
+		gui.set_text(gui.get_node("body"), "Congratulations!")
+	end)
+end
+
+function init(_)
+	start_tasks()
+end
+
+function on_input(_, action_id, action)
+	if action.pressed then
+		key_pressed.input = action_id
+	end
+
+	if action_id == hash("f") and action.pressed then
+		gui.set_text(gui.get_node("body"), "Token cancelled")
+		ct:cancel()
+	end
+
+	if action_id == hash("space") and action.pressed then
+		ct:cancel()
+		msg.post(".", "release_input_focus")
+		start_tasks()
+	end
+end
