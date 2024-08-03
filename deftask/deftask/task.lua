@@ -146,13 +146,15 @@ Task.wait_frames = function(frames, ct)
     local id = "Task.wait_frames " .. frames .. " frames with ct: " .. (ct and ct.id or "nil ct")
     local task = CreateTask(id)
     local count = 0
-    local handler = timer.delay(0, true, function()
+    local handler
+    handler = timer.delay(0, true, function()
         count = count + 1
         if count >= frames then
             logger.log(LogLevel.INFO, AsyncLogType.COMPLETED .. " {" .. id .."}")
             if ct then
                 ct:unregister(cuid)
             end
+            timer.cancel(handler)
             task:done()
         end
 
