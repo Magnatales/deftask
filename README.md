@@ -37,7 +37,7 @@ end
 ```
 
 <h2>Creation</h2>
-Create your own task like this:
+Create your task like this:
 
 ```lua
 local example_task = async(function(ct)
@@ -56,7 +56,7 @@ end)
 ```
 
 <h2>Return type</h2>
-Tasks may have return type
+Tasks may have a return type
 
 ```lua
 local my_task_with_value = async(function()
