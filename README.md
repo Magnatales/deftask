@@ -14,10 +14,10 @@ function init(_)
 	run_async(function ()
 
 	-- Waits for a amount of seconds
-	await(task.delay(5, CT))
+	await(task.delay(5, ct))
 
 	-- Waits until the predicate is met
-	await(task.wait_until(function () return true end, CT))
+	await(task.wait_until(function () return true end, ct))
 
 	-- Waits until any task is completed
 	await(task.when_any(task1(ct), task2(ct)))
@@ -26,7 +26,7 @@ function init(_)
 	await(task.when_all(task1(ct), task2(ct)))
 
 	-- Waits for a certain amount of frames
-	await(task.wait_frames(5, CT))
+	await(task.wait_frames(5, ct))
 
 	-- Waits for a gui animation
 	await(task.gui_animate(...))
