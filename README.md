@@ -27,14 +27,6 @@ function init(_)
 		-- Waits for a certain amount of frames
 		await(task.wait_frames(5, ct))
 
-		-- Task with return type
-		local my_task = async(function()
-			await(task.delay(4, ct))
-			return 5
-		end)
-		local value = await(my_task())
-		print(value) -- 5
-
 		-- Waits for a gui animation
 		await(task.gui_animate(...))
 
@@ -45,7 +37,7 @@ end
 ```
 
 <h2>Creation</h2>
-Create a your own task like this:
+Create your own task like this:
 
 ```lua
 local example_task = async(function(ct)
@@ -63,6 +55,17 @@ run_async(function()
 end)
 ```
 
+<h2>Return type</h2>
+Tasks may have return type
+
+```lua
+local my_task_with_value = async(function()
+	await(task.delay(4, ct))
+	return 5
+end)
+local value = await(my_task_with_value())
+print(value)	-- prints 5 after 4 seconds	
+```
 <h2>Debug</h2>
 If you want to debug the creation, completion, or cancellation of tasks, modify the settings inside async_config.lua
 
