@@ -41,18 +41,14 @@ end
 Create your task like this:
 
 ```lua
-local example_task = async(function(ct)
-    print("Task started!")
-    await(task.delay(5, ct))
-    print("Finished delay!")
-    await(task.wait_frames(1, ct))
-    print("Finished waiting one frame!")
+local example_task = async(function(...)
+    
 end)
 ```
 So then you can use it like so:
 ```lua
 run_async(function()
-    await(example_task(ct))
+    await(example_task(...))
 end)
 ```
 
