@@ -1,6 +1,6 @@
 # deftask
 
-An async/await wrapper for [Defold](https://defold.com/)
+An async/await wrapper for Lua in [Defold](https://defold.com/)
 
 Web example -> [HTML5](https://magnatales.github.io/deftask-web/)
 
@@ -8,7 +8,7 @@ Web example -> [HTML5](https://magnatales.github.io/deftask-web/)
 
 In your game.project add the following line to the [dependencies](https://defold.com/manuals/libraries/#setting-up-library-dependencies) field under the project section:
 ```
-https://github.com/Magnatales/deftask/archive/refs/tags/1.0.1.zip
+https://github.com/Magnatales/deftask/archive/refs/tags/1.0.2.zip
 ```
 After that, click `Project` -> `Fetch Libraries`
 
