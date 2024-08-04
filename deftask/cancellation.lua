@@ -13,9 +13,8 @@ local new = function(id)
     }
 
     --- Register a callback to be called when the token is cancelled by id
-    --- @param id string @The id of the callback
     --- @param callback function @The callback
-    --- @return number @The id of the callback
+    --- @return number @The cuid (counter unique identifier) of the callback 
     function ct:register(callback)
         ct.ids = ct.ids + 1
         if ct.onCanceledList[ct.ids] == nil then
