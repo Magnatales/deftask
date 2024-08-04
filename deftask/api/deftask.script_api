@@ -3,50 +3,16 @@
     #*****************************************************************************************************
     
 - name: async
-  type: table
-  desc: Async
-  members:
-    - name: async
-      type: function
-      desc: The async function decorator.
-      parameters:
-        - name: fun
-          type: function
-          desc: The function to make async.
-        - name: id
-          type: string|nil
-          desc: The optional id of the task.
-      return:
-        - name: result
-          type: function
-          desc: The async function.
+  type: function
+  desc: Create an async function - async(function() ... end)
 
-    - name: await
-      type: function
-      desc: The await function.
-      parameters:
-        - name: task
-          type: Task
-          desc: The task to await.
-      return:
-        - name: result
-          type: any
-          desc: The result of the task.
+- name: await
+  type: function
+  desc: Awaits a task - await(task.delay(...))
 
-    - name: run_async
-      type: function
-      desc: Run an async function.
-      parameters:
-        - name: fun
-          type: function
-          desc: The async function to run.
-        - name: ...
-          type: any
-          desc: Arguments to pass to the async function.
-      return:
-        - name: result
-          type: any
-          desc: The result of the async function.
+- name: run_async
+  type: function
+  desc: Run an async flow - run_async(function() ... end)
 
     #*****************************************************************************************************
     #***** AWAITABLE **************************************************************************************
