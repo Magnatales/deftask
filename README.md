@@ -1,6 +1,6 @@
 # deftask
 
-An async/await wrapper for [Defold](https://defold.com/)
+An async/await wrapper for Lua in [Defold](https://defold.com/)
 
 Web example -> [HTML5](https://magnatales.github.io/deftask-web/)
 
