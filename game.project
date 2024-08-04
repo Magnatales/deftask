@@ -21,3 +21,6 @@ game_binding = /input/game.input_bindingc
 show_fullscreen_button = 0
 show_made_with_defold = 0
 
+[library]
+include_dirs = deftask
+
