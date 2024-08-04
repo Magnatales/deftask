@@ -18,7 +18,7 @@ end
 
 local function condition(key_requested)
 	local predicate = function()
-	  return key_pressed.input == hash(key_requested)
+		return key_pressed.input == hash(key_requested)
 	end
 
 	return predicate
@@ -35,6 +35,12 @@ local function start_tasks()
 	end))
 	gui.set_text(gui.get_node("title"), "WhenUntil processing")
 	run_async(function()
+		local my_task = async(function()
+			await(task.delay(4, ct))
+			return 5
+		end)
+		local value = await(my_task()) -- value is 5
+		print(value)
 		local progress = 0
 		progress_bar:update_progress(progress)
 		while progress < 100 do
@@ -70,3 +76,11 @@ function on_input(_, action_id, action)
 		start_tasks()
 	end
 end
+
+-- Task with return type
+local my_task = async(function()
+	await(task.delay(4, ct))
+	return 5
+end)
+local value = await(my_task())
+print(value)   -- 5	
