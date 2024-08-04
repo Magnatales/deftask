@@ -72,8 +72,8 @@ end)
 ```lua
 local cancellation = require("deftask.cancellation")
 ct = cancellation.new("id") -- create a new instance
-local cuid = ct:register(...) -- register callbacks
-ct:unregister(cuid)
+local cuid = ct:register(...) -- register callbacks and returns a counter unique identifier
+ct:unregister(cuid) -- unregister the callbacks for this cuid
 ct:cancel() -- cancels the token and calls all the callbacks
 ```
 
