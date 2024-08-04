@@ -8,9 +8,10 @@ Web example -> [HTML5](https://magnatales.github.io/deftask-web/)
 
 ```lua
 local task = require("deftask.task")
+local cancellation = require("deftask.cancellation")
 
 function init(_)
-	local ct = task.cancellation.new("task_cancellation")
+	local ct = cancellation.new("task_cancellation")
 	run_async(function ()
 
 	-- Waits for a amount of seconds
