@@ -56,11 +56,11 @@ end)
 Tasks may have a return type
 
 ```lua
-local my_task_with_value = async(function()
-    await(task.delay(4, CT))
+local my_task_with_value = async(function(ct)
+    await(task.delay(4, ct))
     return 5
 end)
-local value = await(my_task_with_value())
+local value = await(my_task_with_value(ct))
 print(value) -- prints 5 after 4 seconds	
 ```
 <h2>Debug</h2>
