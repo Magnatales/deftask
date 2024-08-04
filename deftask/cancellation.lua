@@ -1,6 +1,7 @@
 local logger = require("deftask.logger")
 
 --- Create a new token
+--- @param id string @The id of the token
 ---@return CancellationToken ct @Returns a new token
 local new = function(id)
     ---@class CancellationToken
@@ -25,7 +26,7 @@ local new = function(id)
     end
 
     --- Unregister a callback from the token by id
-    --- @param id number @The id of the callback
+    --- @param id number @The cuid of the callback
     function ct:unregister(id)
         ct.onCanceledList[id] = nil
     end
