@@ -63,6 +63,16 @@ end)
 local value = await(my_task_with_value(ct))
 print(value) -- prints 5 after 4 seconds	
 ```
+<h2>Cancellation</h2>
+
+```lua
+local cancellation = require("deftask.cancellation")
+ct = cancellation.new("id") -- create a new instance
+local cuid = ct:register(...) -- register callbacks when a token is canceled
+ct:unregister(cuid)
+ct:cancel() -- cancels the token and calls all the callbacks
+```
+
 <h2>Debug</h2>
 If you want to debug the creation, completion, or cancellation of tasks, modify the settings inside async_config.lua
 
