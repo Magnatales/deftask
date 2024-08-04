@@ -12,7 +12,8 @@ local task = require("deftask.task")
 function init(_)
     local ct = task.cancellation.new("task_cancellation")
 	run_async(function ()
-		-- Waits for 5 seconds
+
+		-- Waits for a amount of seconds
 		await(task.delay(5, ct))
 
 		-- Waits until the predicate is met
@@ -30,14 +31,14 @@ function init(_)
 		-- Waits for a gui animation
 		await(task.gui_animate(...))
 
-		--- Waits for a go animation
+		-- Waits for a go animation
 		await(task.go_animate(...))
 	end)
 end
 ```
 
 <h2>Creation</h2>
-Create a your own task like this:
+Create your task like this:
 
 ```lua
 local example_task = async(function(ct)
@@ -55,6 +56,17 @@ run_async(function()
 end)
 ```
 
+<h2>Return type</h2>
+Tasks may have a return type
+
+```lua
+local my_task_with_value = async(function()
+	await(task.delay(4, ct))
+	return 5
+end)
+local value = await(my_task_with_value())
+print(value)	-- prints 5 after 4 seconds	
+```
 <h2>Debug</h2>
 If you want to debug the creation, completion, or cancellation of tasks, modify the settings inside async_config.lua
 
