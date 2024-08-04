@@ -1,0 +1,256 @@
+    #*****************************************************************************************************
+    #***** ASYNC/AWAIT ***********************************************************************************
+    #*****************************************************************************************************
+    
+- name: async
+  type: table
+  desc: Async
+  members:
+    - name: async
+      type: function
+      desc: The async function decorator.
+      parameters:
+        - name: fun
+          type: function
+          desc: The function to make async.
+        - name: id
+          type: string|nil
+          desc: The optional id of the task.
+      return:
+        - name: result
+          type: function
+          desc: The async function.
+
+    - name: await
+      type: function
+      desc: The await function.
+      parameters:
+        - name: task
+          type: Task
+          desc: The task to await.
+      return:
+        - name: result
+          type: any
+          desc: The result of the task.
+
+    - name: run_async
+      type: function
+      desc: Run an async function.
+      parameters:
+        - name: fun
+          type: function
+          desc: The async function to run.
+        - name: ...
+          type: any
+          desc: Arguments to pass to the async function.
+      return:
+        - name: result
+          type: any
+          desc: The result of the async function.
+
+    #*****************************************************************************************************
+    #***** AWAITABLE **************************************************************************************
+    #*****************************************************************************************************
+
+- name: awaitable
+  type: table
+  desc: Awaitable.
+  members:
+    - name: awaitable.GetTask
+      type: function
+      desc: Returns an awaiter object.
+      return:
+        - name: task
+          type: Task
+          desc: The awaiter object.
+
+    - name: awaitable.IsAwaiter
+      type: function
+      desc: Checks if the awaiter is a valid awaiter.
+      parameters:
+        - name: awaiter
+          type: Task
+          desc: The awaiter to check.
+      return:
+        - name: result
+          type: bool
+          desc: Whether the awaiter is valid.
+
+    #*****************************************************************************************************
+    #***** CANCELLATION ***********************************************************************************
+    #*****************************************************************************************************
+
+- name: cancellation
+  type: table
+  desc: CancellationToken.
+  members:
+    - name: new
+      type: function
+      desc: Create a new cancellation token.
+      parameters:
+        - name: id
+          type: string
+          desc: Identifier of the CancellationToken.
+      return:
+        - name: ct
+          type: CancellationToken
+          desc: The new cancellation token.
+          
+    #*****************************************************************************************************
+    #***** TASK *******************************************************************************************
+    #*****************************************************************************************************
+
+- name: task
+  type: table
+  desc: Task.
+  members:
+
+    - name: task.yield
+      type: function
+      desc: Creates a task that completes in the next frame.
+      parameters:
+        - name: ct
+          type: CancellationToken
+          desc: The cancellation token.
+      return:
+        - name: task
+          type: Task
+          desc: The task.
+
+    - name: task.delay
+      type: function
+      desc: Creates a task that completes after a delay.
+      parameters:
+        - name: seconds
+          type: number
+          desc: The delay in seconds.
+        - name: ct
+          type: CancellationToken
+          desc: The cancellation token.
+      return:
+        - name: task
+          type: Task
+          desc: The task.
+
+    - name: task.wait_until
+      type: function
+      desc: Creates a task that completes when a predicate is true.
+      parameters:
+        - name: predicate
+          type: function
+          desc: The predicate function.
+        - name: ct
+          type: CancellationToken
+          desc: The cancellation token.
+      return:
+        - name: task
+          type: Task
+          desc: The task.
+
+    - name: task.when_any
+      type: function
+      desc: Creates a task that completes when any of the tasks complete.
+      parameters:
+        - name: ...
+          type: Task
+          desc: Tasks to await.
+      return:
+        - name: task
+          type: Task
+          desc: The task.
+
+    - name: task.when_all
+      type: function
+      desc: Creates a task that completes when all of the tasks complete.
+      parameters:
+        - name: ...
+          type: Task
+          desc: Tasks to await.
+      return:
+        - name: task
+          type: Task
+          desc: The task.
+
+    - name: task.wait_frames
+      type: function
+      desc: Creates a task that waits for a certain number of frames.
+      parameters:
+        - name: frames
+          type: number
+          desc: The number of frames to wait.
+        - name: ct
+          type: CancellationToken
+          desc: The cancellation token.
+      return:
+        - name: task
+          type: Task
+          desc: The task.
+
+    - name: task.gui_animate
+      type: function
+      desc: Creates a task for a GUI animation.
+      parameters:
+        - name: node
+          type: userdata
+          desc: The node to animate.
+        - name: property
+          type: hash
+          desc: The property to animate.
+        - name: to
+          type: number|vector3|vector4
+          desc: The value to animate to.
+        - name: easing
+          type: userdata
+          desc: The easing function to use.
+        - name: duration
+          type: number
+          desc: The duration of the animation.
+        - name: delay
+          type: number
+          desc: The delay before the animation starts.
+        - name: complete_function
+          type: function
+          desc: The function to call when the animation is complete.
+        - name: ct
+          type: CancellationToken
+          desc: The cancellation token.
+      return:
+        - name: task
+          type: Task
+          desc: The task.
+
+    - name: task.go_animate
+      type: function
+      desc: Creates a task for a GO animation.
+      parameters:
+        - name: url
+          type: hash
+          desc: The URL to animate.
+        - name: property
+          type: hash
+          desc: The property to animate.
+        - name: playback
+          type: userdata
+          desc: The playback mode.
+        - name: to
+          type: number|vector3|vector4
+          desc: The value to animate to.
+        - name: easing
+          type: userdata
+          desc: The easing function to use.
+        - name: duration
+          type: number
+          desc: The duration of the animation.
+        - name: delay
+          type: number
+          desc: The delay before the animation starts.
+        - name: complete_function
+          type: function
+          desc: The function to call when the animation is complete.
+        - name: ct
+          type: CancellationToken
+          desc: The cancellation token.
+      return:
+        - name: task
+          type: Task
+          desc: The task.
