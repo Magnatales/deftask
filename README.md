@@ -27,7 +27,7 @@ function init(_)
 		-- Waits for a certain amount of frames
 		await(task.wait_frames(5, ct))
 
-		-- task with return type
+		-- Task with return type
 		local my_task = async(function()
 			await(task.delay(4, ct))
 			return 5
