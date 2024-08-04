@@ -60,8 +60,11 @@ local my_task_with_value = async(function(ct)
     await(task.delay(4, ct))
     return 5
 end)
-local value = await(my_task_with_value(ct))
-print(value) -- prints 5 after 4 seconds	
+
+run_async(function()
+    local value = await(my_task_with_value(ct))
+    print(value) -- prints 5 after 4 seconds
+end)	
 ```
 <h2>CancellationToken</h2>
 
