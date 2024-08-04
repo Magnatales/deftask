@@ -12,7 +12,8 @@ local task = require("deftask.task")
 function init(_)
     local ct = task.cancellation.new("task_cancellation")
 	run_async(function ()
-		-- Waits for 5 seconds
+
+		-- Waits for a amount of seconds
 		await(task.delay(5, ct))
 
 		-- Waits until the predicate is met
@@ -30,7 +31,7 @@ function init(_)
 		-- Waits for a gui animation
 		await(task.gui_animate(...))
 
-		--- Waits for a go animation
+		-- Waits for a go animation
 		await(task.go_animate(...))
 	end)
 end
