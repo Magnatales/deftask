@@ -2,7 +2,7 @@
 
 An async/await wrapper for Lua in [Defold](https://defold.com/)
 
-Web example -> [HTML5](https://magnatales.github.io/deftask-web/)
+Web example! -> [HTML5](https://magnatales.github.io/deftask-web/)
 
 <h2>Setup</h2>
 
